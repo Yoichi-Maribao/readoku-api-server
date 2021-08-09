@@ -1,0 +1,9 @@
+<h2><%= @title %></h2>
+</br>
+<div class="container">
+  <% if @users.present? %>
+    <%= render 'layouts/users', users: @users%>
+  <% else %>
+    <p>ユーザはいません</p>
+  <% end %>
+</div>

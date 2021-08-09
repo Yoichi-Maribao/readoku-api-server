@@ -1,0 +1,19 @@
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  <%= render 'layouts/error', problem: @user %>
+  <h2>User info</h2>
+  <%= form_with model: @user, local:true do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'Name', class: "form-label" %><br/>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <label for="inputImage">Image</label><br/>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :introduction, 'Introduction', class: "form-label" %><br/>
+    <%= f.text_area :introduction, class: "form-control" %>
+  </div>
+  <%= f.submit "Update User", class: "submit btn btn-secondary" %>
+  <% end %>
+</div>
