@@ -9,7 +9,7 @@
 <% if user == current_user%>
     <%= link_to "", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog mt-3" %>
 <% else %>
-    <div id="follow__btn--<%= user.id %>">
+    <div id="follow__btn--<%= user.id %>", class="mx-auto">
         <%= render 'relationships/follow', user: user %>
     </div>
 <% end %>
