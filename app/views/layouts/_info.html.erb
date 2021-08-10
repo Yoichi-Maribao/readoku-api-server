@@ -1,33 +1,16 @@
 <h2>User info</h2>
 <%= attachment_image_tag user, :profile_image, :size => '100x100', format: 'jpeg', fallback: "no_image.jpg", class: "attachment user profile_image fallback" %>
 <table class="table">
-    <tbody>
-        <tr>
-            <th>name</th>
-            <th><%= user.name %></th>
-        </tr>
-        <tr>
-            <th>introduction</th>
-            <th><%= user.introduction %></th>
-        </tr>
-        <tr>
-            <th>follows</th>
-            <th><%= link_to user.followings.count, following_user_path(user.id) %></th>
-        </tr>
-        <tr>
-            <th>followers</th>
-            <th><%= link_to user.followers.count, followers_user_path(user.id) %></th>
-        </tr>
+    <tbody id="info_table">
+        <%= render 'relationships/info_table', user: user %>
     </tbody>
 </table>
 <div class="row">
 <% if user == current_user%>
     <%= link_to "", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog mt-3" %>
 <% else %>
-    <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), class: "btn btn-primary", method: :DELETE%>
-    <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), class: "btn btn-success", method: :POST %>
-    <% end %>
+    <div id="follow__btn--<%= user.id %>">
+        <%= render 'relationships/follow', user: user %>
+    </div>
 <% end %>
 </div>
