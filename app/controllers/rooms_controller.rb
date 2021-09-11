@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_mutural?
 
   def create
     @room = Room.create
@@ -25,6 +26,14 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:entry).permit(:user_id)
+  end
+
+  def is_mutural?
+    room = Room.find(params[:id])
+    user = room.entries.where(room_id: room.id).where.not(user_id: current_user).first.user
+    unless current_user.following?(user) && user.following?(current_user)
+      redirect_to user_path(user)
+    end
   end
 
 
