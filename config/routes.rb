@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'rooms/show'
   get 'home/about', to:'homes#about'
   devise_for :users
   root to: 'homes#top'
@@ -11,6 +12,9 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show]
+
   post 'follow/:id' => 'relationships#create', as: 'follow'
   delete 'unfollow/:id' => 'relationships#destroy', as: 'unfollow'
 end
