@@ -1,12 +1,13 @@
 class MessagesController < ApplicationController
   def create
+    room = Room.find(params[:message][:room_id])
+    @messages = room.messages
     message = Message.new(message_params)
     message.user_id = current_user.id
     if Entry.where(user_id: current_user.id, room_id: message.room_id).present? && message.message.length <= 140
       message.save
-      redirect_to room_path(message.room_id)
     else
-      @room = Room.find(params[:message][:room_id])
+      @room = room
       @messages = @room.messages
       @message = message
       @entries = @room.entries

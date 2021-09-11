@@ -14,9 +14,9 @@ class RoomsController < ApplicationController
     if Entry.where(user_id: current_user.id,room_id: @room.id).present?
       @messages = @room.messages
       @message = Message.new
-      @entries = @room.entries
+      entries = @room.entries
       # DM相手のユーザーを取得
-      @opponent = @entries.where(room_id: @room.id).where.not(user_id: current_user).first.user
+      @opponent = entries.where(room_id: @room.id).where.not(user_id: current_user).first.user
     else
       redirect_to request.referer
     end

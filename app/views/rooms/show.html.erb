@@ -1,32 +1,10 @@
 <div class="chats mx-auto">
   <h4><%= @opponent.name %>さんとのチャット</h4>
   <div class="chat bg-light my-3 p-4">
-    <% if @messages.present? %>
-      <% @messages.each do |m| %>
-        <% if m.user != current_user %>
-        <div class="chat-box d-flex flex-row">
-          <div class="chat-face mr-3">
-            <%= attachment_image_tag m.user, :profile_image, :size => '40x40', format: 'jpeg', fallback: 'no_image.jpg', class:"message-icon" %>
-          </div>
-          <div class="chat-hukidashi">
-            <p class="ms-2"><%= m.message %></p>
-          </div>
-        </div>
-        <% else %>
-        <div class="chat-box d-flex flex-row-reverse">
-          <div class="chat-face ml-3">
-            <%= attachment_image_tag m.user, :profile_image, :size => '40x40', format: 'jpeg', fallback: 'no_image.jpg', class:"message-icon" %>
-          </div>
-          <div class="chat-hukidashi">
-            <p class="me-2"><%= m.message %></p>
-          </div>
-        </div>
-        <% end %>
-      <% end %>
-    <% end %>
+    <%= render 'messages/chat', messages: @messages %>
   </div>
   <div class="posts">
-    <%= form_with model: @message, local: true do |f| %>
+    <%= form_with model: @message, remote: true do |f| %>
       <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , required: true, size: 65, class:"form-text-field" %>
         <%= f.hidden_field :room_id, value: @room.id %>
           <%= f.submit "投稿",class: 'btn-sm btn-success'%>
