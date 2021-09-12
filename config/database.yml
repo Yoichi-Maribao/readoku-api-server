@@ -5,6 +5,7 @@ default: &default
   username: root
   password: password # docker-compose.ymlのMYSQL_ROOT_PASSWORD
   host: db # docker-compose.ymlのservice名
+  strict: true
 
 development:
   <<: *default
