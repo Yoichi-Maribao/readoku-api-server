@@ -11,8 +11,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
-/db/mysql_data
-/db/mysql_data/*
+[core]
+excludesFile = /db/mysql_data
+excludesFile = /db/mysql_data/*
 
 # Ignore all logfiles and tempfiles.
 /log/*
