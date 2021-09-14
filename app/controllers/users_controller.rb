@@ -27,6 +27,14 @@ before_action :authenticate_user!
         @entry = Entry.new
       end
     end
+
+    ## 投稿数
+    today_begin = Time.current.at_beginning_of_day
+    today_end = Time.current.at_end_of_day
+    @today_amount = @books.created_today.size
+    @yesterday_amount = @books.created_yesterday.size
+    @this_week_amount = @books.created_this_week.size
+    @last_week_amount = @books.created_last_week.size
   end
 
   def edit

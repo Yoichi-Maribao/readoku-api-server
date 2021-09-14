@@ -11,7 +11,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book_new = Book.new
     @book_comment = BookComment.new
-    impressionist(@book, nil, unique: [:session_hash])
+    impressionist(@book, nil)
   end
 
   def create

@@ -29,10 +29,12 @@ class RoomsController < ApplicationController
   end
 
   def is_mutural?
-    room = Room.find(params[:id])
-    user = room.entries.where(room_id: room.id).where.not(user_id: current_user).first.user
-    unless current_user.following?(user) && user.following?(current_user)
-      redirect_to user_path(user)
+    if params[:id]
+      room = Room.find(params[:id])
+      user = room.entries.where(room_id: room.id).where.not(user_id: current_user).first.user
+      unless current_user.following?(user) && user.following?(current_user)
+        redirect_to user_path(user)
+      end
     end
   end
 
