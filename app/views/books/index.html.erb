@@ -5,4 +5,25 @@
 </div>
 <div class="col-md-8 offset-md-1">
   <%= render 'layouts/books', books: @books %>
+  <h4>7日分の投稿数</h4>
+  <table class="table table-bordered">
+    <thead>
+      <% (0..6).each do |i| %>
+      <th>
+      <% if i == 6 %>
+        今日
+      <% else %>
+        <%= 6 - i %>日前
+      <% end %>
+      </th>
+      <% end %>
+    </thead>
+    <tbody>
+      <% (0..6).each do |i| %>
+        <td>
+          <%= Book.all.where(created_at: (6 - i).day.ago.all_day).size %>
+        </td>
+      <% end %>
+    </tbody>
+  </table>
 </div>
