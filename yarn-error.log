@@ -1,0 +1,38 @@
+Arguments: 
+  /usr/bin/node /root/.yarn/bin/yarn.js ls
+
+PATH: 
+  /root/.yarn/bin:/root/.config/yarn/global/node_modules/.bin:/usr/local/bundle/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  10.24.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /app_name/package.json: Unexpected token / in JSON at position 66
+      at JSON.parse (<anonymous>)
+      at /root/.yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/root/.yarn/lib/cli.js:310:30)
+      at /root/.yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "bookers",
+    "private": true,
+    "dependencies": {
+      // 省略
+      "chart.js": "^2.7.1" // ←ここに追記
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
