@@ -17,8 +17,9 @@ jobs:
           HOST_NAME: ${{ secrets.HOST_NAME }}
         # ↓実行したいコマンド
         run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 700 private_key
-          ls -al
+          echo "$PRIVATE_KEY" > private_key && chmod 00 private_key
+          cd
+          ls -al ../
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd re_bookers_2  &&
             git pull origin main &&
             ~/.rbenv/shims/bundle install &&
