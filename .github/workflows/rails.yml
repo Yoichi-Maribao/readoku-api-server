@@ -19,7 +19,7 @@ jobs:
         # ↓実行したいコマンド
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          scp -i private_key ./private_key ${USER_NAME}@{HOST_NAME}
+          scp ./private_key ${USER_NAME}@{HOST_NAME}:~/
           ## ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME}
           ## 'cd re_bookers_2  &&
           ##  git pull origin main &&
