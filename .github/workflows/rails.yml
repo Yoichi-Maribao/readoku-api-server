@@ -12,14 +12,13 @@ jobs:
       - name: Deploy
         # ↓環境変数
         env:
-          SECRET_TEST: ${{ secrets.SECRET_TEST }}
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           USER_NAME: ${{ secrets.USER_NAME }}
           HOST_NAME: ${{ secrets.HOST_NAME }}
         # ↓実行したいコマンド
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          scp -i private_key ./private_key ec2-user@18.118.236.243:~/
+          scp -i private_key ./private_key ${USER_NAME}@${HOST_NAME}:~/
           ## ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME}
           ## 'cd re_bookers_2  &&
           ##  git pull origin main &&
