@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 700 private_key
           ls -al
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME}'cd re_bookers_2  &&
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} 'cd re_bookers_2  &&
             git pull origin main &&
             ~/.rbenv/shims/bundle install &&
             ~/.rbenv/shims/bundle exec rails assets:precompile RAILS_ENV=production &&
