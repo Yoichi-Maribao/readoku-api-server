@@ -19,8 +19,7 @@ jobs:
       # ↓実行したいコマンド
       run: | 
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        echo "$SECRET_TEST" > test.txt
-        cat test.txt
+        ls
         ## ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME}
         ## 'cd re_bookers_2  &&
         ##  git pull origin main &&
