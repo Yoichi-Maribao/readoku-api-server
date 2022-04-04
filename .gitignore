@@ -5,4 +5,4 @@
 /config/master.key
 /tmp
 /.DS_Store
-/.gitignore
+/node_modules
