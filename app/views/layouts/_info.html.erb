@@ -1,6 +1,16 @@
 <h2>User info</h2>
 <%= attachment_image_tag user, :profile_image, :size => '100x100', format: 'jpeg', fallback: "no_image.jpg", class: "attachment user profile_image fallback" %>
 <table class="table">
+    <tbody>
+        <tr>
+            <th>name</th>
+            <th><%= user.name %></th>
+        </tr>
+        <tr>
+            <th>introduction</th>
+            <th><%= user.introduction %></th>
+        </tr>
+    </tbody>
     <tbody id="info_table">
         <%= render 'relationships/info_table', user: user %>
     </tbody>

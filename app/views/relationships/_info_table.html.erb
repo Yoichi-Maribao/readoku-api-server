@@ -1,12 +1,4 @@
 <tr>
-    <th>name</th>
-    <th><%= user.name %></th>
-</tr>
-<tr>
-    <th>introduction</th>
-    <th><%= user.introduction %></th>
-</tr>
-<tr>
     <th>follows</th>
     <th id="following_num"><%= link_to user.followings.count, following_user_path(user.id) %></th>
 </tr>
