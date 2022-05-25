@@ -9,6 +9,32 @@ before_action :authenticate_user!
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+
+    ## DM機能
+    @current_user_entry = Entry.where(user_id: current_user.id)
+    @user_entry = Entry.where(user_id: @user.id)
+    unless @user.id == current_user.id
+      @current_user_entry.each do |cu|
+        @user_entry.each do |u|
+          if cu.room_id == u.room_id
+            @is_room = true
+            @room_id = cu.room_id
+          end
+        end
+      end
+      unless @is_room
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
+
+    ## 投稿数
+    today_begin = Time.current.at_beginning_of_day
+    today_end = Time.current.at_end_of_day
+    @today_amount = @books.created_today.size
+    @yesterday_amount = @books.created_yesterday.size
+    @this_week_amount = @books.created_this_week.size
+    @last_week_amount = @books.created_last_week.size
   end
 
   def edit

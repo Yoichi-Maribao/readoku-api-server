@@ -20,11 +20,12 @@
       <td id="favorite__<%= @book.id %>">
         <%= render 'favorites/favorite', book: @book %>
       </td>
+      <td>コメント件数：<%= @book.book_comments.count %></td>
+      <td>閲覧数：<%= @book.impressionist_count%></td>
     </tr>
   </table>
   <div class="comment-wrapper">
     <div class="form-group">
-    <p>コメント件数：<%= @book.book_comments.count %></p>
     <% @book.book_comments.each do |book_comment| %>
     <div class="mb-3">
       <%= attachment_image_tag book_comment.user, :profile_image, :size => '40x40', format: 'jpeg', fallback: "no_image.jpg", class: "attachment user profile_image fallback" %>

@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower # 自分をフォローしている人
   attachment :profile_image
 
+  has_many :massages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+
   def books
     return Book.where(user_id: self.id)
   end
