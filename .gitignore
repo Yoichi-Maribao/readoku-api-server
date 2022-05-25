@@ -33,4 +33,5 @@ excludesFile = /db/mysql_data/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+development
 /vendor/*
