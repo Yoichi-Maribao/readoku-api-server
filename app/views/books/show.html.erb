@@ -20,6 +20,8 @@
       <td id="favorite__<%= @book.id %>">
         <%= render 'favorites/favorite', book: @book %>
       </td>
+      <td>コメント件数：<%= @book.book_comments.count %></td>
+      <td>閲覧数：<%= @book.impressionist_count%></td>
     </tr>
   </table>
   <div class="comment-wrapper">

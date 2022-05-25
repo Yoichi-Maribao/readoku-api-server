@@ -7,7 +7,6 @@ ruby '2.6.3'
 gem 'rails', '~> 5.2.4'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
-
 # Use mysql
 
 gem 'mysql2'
@@ -76,4 +75,6 @@ gem 'kaminari', '~> 1.2.1'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
+gem 'impressionist', '~> 1.6.1'
+gem 'chart-js-rails'
 gem 'dotenv-rails'
