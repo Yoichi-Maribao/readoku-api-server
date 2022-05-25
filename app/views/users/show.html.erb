@@ -1,5 +1,48 @@
 <div class="col-md-3">
-  <%= render 'layouts/info', books: @books, user: @user %>
+  <%= render 'layouts/info', books: @books, user: @user, room: @room, entry: @entry, room_id: @room_id, is_room: @is_room  %>
   <%= render 'layouts/new', book: @book %>
 </div>
-<%= render 'layouts/books', books: @books %>
+<div class="col-md-8 offset-md-1">
+  <%= render 'layouts/books', books: @books %>
+  <div class="post-chart">
+    <h4>投稿数の前日比・前週比</h4>
+    <table class="table table-bordered">
+      <thead>
+        <th>今日の投稿数</th>
+        <th>前日の投稿数</th>
+        <th>前日比</th>
+      </thead>
+      <tbody>
+        <td><%= @today_amount %></td>
+        <td><%= @yesterday_amount %></td>
+        <td>
+        <% if @yesterday_amount > 0 %>
+          <%= ((@today_amount.to_f / @yesterday_amount.to_f) * 100).to_i %>
+        <% else %>
+          0
+        <% end %>
+          %
+        </td>
+      </tbody>
+    </table>
+    <table class="table table-bordered">
+      <thead>
+        <th>今週の投稿数</th>
+        <th>前週の投稿数</th>
+        <th>前週比</th>
+      </thead>
+      <tbody>
+        <td><%= @this_week_amount %></td>
+        <td><%= @last_week_amount %></td>
+        <td>
+        <% if @last_week_amount > 0 %>
+          <%= ((@this_week_amount.to_f / @last_week_amount.to_f) * 100).to_i %>
+        <% else %>
+          0
+        <% end %>
+        %
+        </td>
+      </tbody>
+    </table>
+  </div>
+</div>

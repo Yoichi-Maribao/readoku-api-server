@@ -3,4 +3,61 @@
   <%= render 'layouts/info', books: @books, user: current_user %>
   <%= render 'layouts/new', book: @book %>
 </div>
-<%= render 'layouts/books', books: @books %>
+<div class="col-md-8 offset-md-1">
+  <%= render 'layouts/books', books: @books %>
+  <h4>7日分の投稿数</h4>
+  <table class="table table-bordered">
+    <thead>
+      <% days = []%>
+      <% (0..6).each do |i| %>
+        <th>
+        <% if i == 6 %>
+          今日
+          <% days << "今日" %>
+        <% else %>
+          <%= 6 - i %>日前
+          <% days << "#{6 - i}日前" %>
+        <% end %>
+        </th>
+      <% end %>
+    </thead>
+    <% book_datas = []%>
+    <tbody>
+      <% (0..6).each do |i| %>
+        <td>
+          <%= Book.all.where(created_at: (6 - i).day.ago.all_day).size %>
+          <% book_datas << Book.all.where(created_at: (6 - i).day.ago.all_day).size %>
+        </td>
+      <% end %>
+    </tbody>
+  </table>
+  <canvas id="myChart"> </canvas>
+
+  <script>
+    let ctx = document.getElementById('myChart').getContext('2d');
+    let chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: <%= raw days %>,
+        datasets: [{
+          label: '投稿した本の数',
+          data: <%= book_datas %>,
+          borderColor: 'rgba(0, 0, 255, 1.0)'
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+                min: 0,
+                max: 10
+              }
+            }
+          ]
+        }
+      }
+    });
+  </script>
+</div>
