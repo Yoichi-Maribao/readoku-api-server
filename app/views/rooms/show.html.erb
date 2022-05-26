@@ -1,0 +1,13 @@
+<div class="chats mx-auto">
+  <h4><%= @opponent.name %>さんとのチャット</h4>
+  <div class="chat bg-light my-3 p-4">
+    <%= render 'messages/chat', messages: @messages %>
+  </div>
+  <div class="posts">
+    <%= form_with model: @message, remote: true do |f| %>
+      <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , required: true, size: 65, class:"form-text-field" %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.submit "投稿",class: 'btn-sm btn-success'%>
+    <% end %>
+  </div>
+</div>

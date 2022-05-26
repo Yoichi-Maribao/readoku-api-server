@@ -1,0 +1,19 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.chat {
+  max-width: 600px;
+  border-radius: 5px;
+}
+
+.message-icon {
+  line-height: 48px;
+}
+
+.chat-hukidashi {
+  line-height: 48px;
+  p {
+    overflow-wrap: break-word;
+    display: inline-block;
+  }
+}

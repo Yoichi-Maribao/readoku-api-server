@@ -1,5 +1,8 @@
 {
   "name": "bookers",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    // 省略
+    "chart.js": "^2.7.1" // ←ここに追記
+  }
 }

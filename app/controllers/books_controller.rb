@@ -1,8 +1,9 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
+  impressionist :actions => [:show]
   def index
     @user = current_user
-    @books = Book.all
+    @books = Book.includes(:favorites).sort {|a,b| b.favorites.size <=> a.favorites.size }
     @book = Book.new
   end
 
@@ -10,6 +11,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book_new = Book.new
     @book_comment = BookComment.new
+    impressionist(@book, nil)
   end
 
   def create

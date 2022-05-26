@@ -19,8 +19,24 @@
 <% if user == current_user%>
     <%= link_to "", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog mt-3" %>
 <% else %>
-    <div id="follow__btn--<%= user.id %>", class="mx-auto">
-        <%= render 'relationships/follow', user: user %>
+    <div class="mx-auto">
+        <% if current_user.following?(user) %>
+            <%= link_to 'フォロー外す', unfollow_path(user.id), method: :DELETE, class:"btn btn-block btn-outline-primary" %>
+            <% if user.following?(current_user)%>
+                <% if is_room %>
+                    <%= link_to "チャットへ", room_path(room_id), class:"btn btn-block btn-outline-warning" %>
+                <% else %>
+                    <%= form_with model: room, url: rooms_path, local: true do |f| %>
+                        <%= fields_for entry do |e| %>
+                            <%= e.hidden_field :user_id, value: user.id %>
+                        <% end %>
+                        <%= f.submit "チャットを始める", class:"btn btn-block btn-outline-warning" %>
+                    <% end %>
+                <% end %>
+            <% end %>
+        <% else %>
+            <%= link_to 'フォローする', follow_path(user.id), method: :POST, class:"btn btn-outline-primary" %>
+        <% end %>
     </div>
 <% end %>
 </div>
