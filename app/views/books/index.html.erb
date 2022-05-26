@@ -1,11 +1,10 @@
-<%= render 'layouts/error', problem: @book %>
 <div class="col-md-3">
   <%= render 'layouts/info', books: @books, user: current_user %>
   <%= render 'layouts/new', book: @book %>
 </div>
 <div class="col-md-8 offset-md-1">
   <%= render 'layouts/books', books: @books %>
-  <h4>7日分の投稿数</h4>
+  <h4>一週間の投稿数</h4>
   <table class="table table-bordered">
     <thead>
       <% days = []%>
