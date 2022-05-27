@@ -2,7 +2,6 @@
   "name": "bookers",
   "private": true,
   "dependencies": {
-    // 省略
-    "chart.js": "^2.7.1" // ←ここに追記
+    "chart.js": "^2.7.1"
   }
 }
