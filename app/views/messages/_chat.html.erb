@@ -3,7 +3,7 @@
     <% if m.user != current_user %>
     <div class="chat-box d-flex flex-row">
       <div class="chat-face mr-3">
-        <%= attachment_image_tag m.user, :profile_image, :size => '40x40', format: 'jpeg', fallback: 'no_image.jpg', class:"message-icon" %>
+        <%= image_tag m.user.get_profile_image(40, 40), class:"message-icon" %>
       </div>
       <div class="chat-hukidashi">
         <p class="ms-2"><%= m.message %></p>
@@ -12,7 +12,7 @@
     <% else %>
     <div class="chat-box d-flex flex-row-reverse">
       <div class="chat-face ml-3">
-        <%= attachment_image_tag m.user, :profile_image, :size => '40x40', format: 'jpeg', fallback: 'no_image.jpg', class:"message-icon" %>
+        <%= image_tag m.user.get_profile_image(40, 40), class:"message-icon" %>
       </div>
       <div class="chat-hukidashi">
         <p class="me-2"><%= m.message %></p>
