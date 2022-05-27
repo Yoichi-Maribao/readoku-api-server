@@ -13,14 +13,11 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followings, through: :active_relationships, source: :followed # 自分がフォローしている人
   has_many :followers, through: :passive_relationships, source: :follower # 自分をフォローしている人
-  attachment :profile_image
+
+  has_one_attached :profile_image
 
   has_many :massages, dependent: :destroy
   has_many :entries, dependent: :destroy
-
-  def books
-    return Book.where(user_id: self.id)
-  end
 
   # ユーザーをフォローする
   def follow(user_id)
@@ -35,5 +32,13 @@ class User < ApplicationRecord
   # フォローしていればtrueを返す
   def following?(user_id)
     followings.include?(user_id)
+  end
+
+  def get_profile_image(width, height)
+    if !profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    return profile_image.variant(resize: "#{width}x#{height}").processed
   end
 end
