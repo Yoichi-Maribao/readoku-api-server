@@ -36,3 +36,4 @@ excludesFile = /db/mysql_data/*
 /config/master.key
 development
 /vendor/*
+.env
