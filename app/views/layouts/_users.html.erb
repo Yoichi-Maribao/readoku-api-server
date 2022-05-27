@@ -10,7 +10,7 @@
     <% users.each do |user| %>
       <tr>
         <td>
-          <%= attachment_image_tag user, :profile_image, :size => '40x40', format: 'jpeg', fallback: "no_image.jpg", class: "attachment user profile_image fallback" %>
+          <%= image_tag user.get_profile_image(100, 100), class: "attachment user profile_image fallback" %>
         </td>
         <td><%= user.name %></td>
         <td>フォロー数：<%= user.followings.count %></td>
