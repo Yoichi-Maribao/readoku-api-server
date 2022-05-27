@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -69,8 +69,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
 gem 'kaminari', '~> 1.2.1'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
@@ -80,3 +78,5 @@ gem 'chart-js-rails'
 gem 'dotenv-rails'
 gem 'asset_sync'
 gem 'fog-aws'
+gem 'aws-sdk-s3', require: false
+gem 'image_processing'

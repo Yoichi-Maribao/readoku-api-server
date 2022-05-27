@@ -8,7 +8,7 @@
   </div>
   <div class="form-group">
     <label for="inputImage">Image</label><br/>
-    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+    <%= f.file_field :profile_image,  accept: "image/png image/jpeg", placeholder: "プロフィール画像" %>
   </div>
   <div class="form-group">
     <%= f.label :introduction, 'Introduction', class: "form-label" %><br/>
