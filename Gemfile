@@ -80,3 +80,4 @@ gem 'asset_sync'
 gem 'fog-aws'
 gem 'aws-sdk-s3', require: false
 gem 'image_processing'
+gem 'rack-cors'
