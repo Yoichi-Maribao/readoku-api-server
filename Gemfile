@@ -81,3 +81,5 @@ gem 'fog-aws'
 gem 'aws-sdk-s3', require: false
 gem 'image_processing'
 gem 'rack-cors'
+
+gem "devise-jwt", "~> 0.9.0"
